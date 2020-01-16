@@ -1,10 +1,11 @@
-package da.chatnew.chatmessenger01
+package da.chatnew.chatmessenger01.registerlogin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import da.chatnew.chatmessenger01.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package da.chatnew.chatmessenger01
+package da.chatnew.chatmessenger01.messages
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
+import da.chatnew.chatmessenger01.R
+import da.chatnew.chatmessenger01.registerlogin.RegisterActivity
 
 class LatestMessagesActivity : AppCompatActivity() {
 
