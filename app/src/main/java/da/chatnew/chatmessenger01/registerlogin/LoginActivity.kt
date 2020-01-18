@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import da.chatnew.chatmessenger01.R
+import da.chatnew.chatmessenger01.messages.LatestMessagesActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -21,8 +22,14 @@ class LoginActivity : AppCompatActivity() {
             Log.d("LoginActivity","Attempt login with email/pw : $email /***")
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener ()
-//                .add
+                .addOnSuccessListener {
+                    intent = Intent (this, LatestMessagesActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                .addOnFailureListener {
+                    // Если авторизация не удалась - вывести ошибку пользователю
+                }
         }
 
         back_to_register_text_view.setOnClickListener {
