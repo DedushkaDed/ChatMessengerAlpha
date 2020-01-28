@@ -3,20 +3,25 @@ package da.chatnew.chatmessenger01.messages
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.renderscript.Sampler
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import da.chatnew.chatmessenger01.R
+import da.chatnew.chatmessenger01.messages.NewMessageActivity.Companion.USER_KEY
 import da.chatnew.chatmessenger01.models.ChatMessage
 import da.chatnew.chatmessenger01.models.User
 import da.chatnew.chatmessenger01.registerlogin.LoginActivity
 import da.chatnew.chatmessenger01.registerlogin.RegisterActivity
+import da.chatnew.chatmessenger01.view.LatestMessageRow
 import kotlinx.android.synthetic.main.activity_latest_messages.*
 import kotlinx.android.synthetic.main.latest_message_row.view.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
@@ -32,8 +37,16 @@ class LatestMessagesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_latest_messages)
 
         recyclerview_latest_messages.adapter = adapter
+        recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL)) // Разделяющая полоса между 2-мя пользователями
 
-       // setupDummyRows()
+        // При нажатии на пользователя - запуск диалог.окна вместе с выбранным пользователем.
+        adapter.setOnItemClickListener { item, view ->
+            val intent = Intent(this, ChatLogActivity::class.java)
+
+            val row = item as LatestMessageRow
+            intent.putExtra(USER_KEY, row.chatPartnerUser)
+            startActivity(intent)
+        }
 
         listenForLatestMessages()
 
@@ -42,16 +55,6 @@ class LatestMessagesActivity : AppCompatActivity() {
         verifyUserIsLoggedIn()
     }
 
-    class LatestMessageRow (val chatMessage: ChatMessage): Item<GroupieViewHolder>(){
-        override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-            viewHolder.itemView.message_textiview_latest_message.text = chatMessage.text
-        }
-
-        override fun getLayout(): Int {
-            return R.layout.latest_message_row
-        }
-
-    }
 
     val latestMessagesMap = HashMap<String, ChatMessage>()
 
@@ -61,7 +64,6 @@ class LatestMessagesActivity : AppCompatActivity() {
             adapter.add(LatestMessageRow(it))
         }
     }
-
     private fun listenForLatestMessages(){
         val fromId = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId")
@@ -120,6 +122,7 @@ class LatestMessagesActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK .or (Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+        // При закрытии приложения - сделать сохранение данных пользователя. На данный момент - сохранение отсутсвтует.
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -135,13 +138,16 @@ class LatestMessagesActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
         return super.onOptionsItemSelected(item)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.nav_menu_exit, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        finish()
     }
 }

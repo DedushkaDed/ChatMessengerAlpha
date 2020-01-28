@@ -21,7 +21,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true   // Изменил на true = оптимизиция размера приложения
+            shrinkResources true //Изменил на true = оптимизиция размера приложения
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

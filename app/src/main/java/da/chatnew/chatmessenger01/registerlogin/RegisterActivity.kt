@@ -61,6 +61,11 @@ class RegisterActivity : AppCompatActivity() {
 
 
     private fun performRegister() {
+        if(selectedPhotoUri == null) {
+            Toast.makeText(this, "Пожалуйста,добавьте фотографию", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val email = email_edittext_register.text.toString()
         val password = password_edittext_register.text.toString()
 

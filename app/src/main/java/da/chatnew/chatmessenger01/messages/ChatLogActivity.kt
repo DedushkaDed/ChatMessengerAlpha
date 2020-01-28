@@ -69,6 +69,8 @@ class ChatLogActivity : AppCompatActivity() {
                     }
                 }
 
+                recyclerview_chat_log.scrollToPosition(adapter.itemCount -1) // При открытии окна с чатом - скролл в самый низ диалога.
+
             }
 
             override fun onCancelled(p0: DatabaseError) {
