@@ -17,14 +17,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
-//        supportActionBar!!.hide() // Найти другой способ как можно скрыть ActionBar
+        verifyUserIsLoggedIn()
 
         login_button_login.setOnClickListener {
-
             perfomLogin()
         }
-
         back_to_register_text_view.setOnClickListener {
             intent = Intent (this, RegisterActivity::class.java)
             startActivity(intent)
@@ -32,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun perfomLogin (){
+    private fun perfomLogin() {
         val email = email_edittext_login.text.toString()
         val password = password_edittext_login.text.toString()
 
@@ -49,8 +46,17 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             }
             .addOnFailureListener {
-                // Если авторизация не удалась - вывести ошибку пользователю
                 Toast.makeText(this, "\"Ошибка в логине пароле${it.message}\"", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun verifyUserIsLoggedIn(){
+        val uid = FirebaseAuth.getInstance().uid
+        if (uid != null) {
+
+            val intent = Intent(this, LatestMessagesActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK .or (Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 }
