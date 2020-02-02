@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".messages.ChatLogActivity"
-android:background="@android:color/white">
+        android:background="#171F28">
 
     <EditText
             android:layout_width="0dp"
@@ -14,12 +14,16 @@ android:background="@android:color/white">
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/edittext_chat_log"
-            android:hint="Enter Message"
-            android:background="@android:color/white"
+            android:hint="Write your message here..."
+            android:background="@drawable/rounded_message_box"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/send_button_chat_log" android:layout_marginRight="8dp"/>
+            app:layout_constraintEnd_toStartOf="@+id/send_button_chat_log" android:layout_marginRight="8dp"
+            android:autoText="false" android:textIsSelectable="false"
+            android:paddingLeft="20dp" android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" android:textColorHighlight="@android:color/white"
+            android:textColorLink="@android:color/white"/>
     <Button
             android:text="Send"
             android:layout_width="wrap_content"
@@ -39,7 +43,7 @@ android:background="@android:color/white">
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/edittext_chat_log"
             app:layout_constraintTop_toTopOf="parent" android:id="@+id/recyclerview_chat_log"
-            android:background="@android:color/holo_blue_dark"
+            android:background="#171F28"
 
     />
 </androidx.constraintlayout.widget.ConstraintLayout>

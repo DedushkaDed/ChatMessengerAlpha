@@ -122,7 +122,11 @@ class LatestMessagesActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK .or (Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
-        // При закрытии приложения - сделать сохранение данных пользователя. На данный момент - сохранение отсутсвтует.
+        else{
+            // При закрытии приложения - сделать сохранение данных пользователя. На данный момент - сохранение отсутсвтует.
+        }
+
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

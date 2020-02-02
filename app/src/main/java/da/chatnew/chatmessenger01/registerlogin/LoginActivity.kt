@@ -17,7 +17,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        supportActionBar!!.hide() // Найти другой способ как можно скрыть ActionBar
+
+//        supportActionBar!!.hide() // Найти другой способ как можно скрыть ActionBar
 
         login_button_login.setOnClickListener {
 

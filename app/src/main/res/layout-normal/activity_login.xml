@@ -14,36 +14,41 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/secondpi"/>
+            android:background="@drawable/backgroundone"/>
     <EditText
             android:layout_width="350dp"
             android:layout_height="46dp"
+            android:textColorHint="@android:color/white"
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/email_edittext_login"
             android:paddingLeft="15dp"
-            android:background="#7BD2AF" android:hint="Email " android:layout_marginTop="412dp"
+            android:hint="Email " android:layout_marginTop="376dp"
             app:layout_constraintTop_toTopOf="@+id/imageView2"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            app:layout_constraintHorizontal_bias="0.488"/>
+            app:layout_constraintHorizontal_bias="0.488" android:textStyle="bold"
+            android:textCursorDrawable="@android:color/holo_blue_light"
+            android:textSize="20sp" android:textColorHighlight="@android:color/white"
+            android:textColorLink="@android:color/white" android:textColor="@android:color/white"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="46dp"
+            android:textColorHint="@android:color/white"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/password_edittext_login"
             android:paddingLeft="15dp"
-            android:background="#7BD2AF"
             app:layout_constraintStart_toStartOf="@+id/email_edittext_login"
             app:layout_constraintEnd_toEndOf="@+id/email_edittext_login"
-            android:layout_marginTop="12dp" app:layout_constraintTop_toBottomOf="@+id/email_edittext_login"
-            app:layout_constraintHorizontal_bias="0.0" android:hint="Password"/>
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/email_edittext_login"
+            app:layout_constraintHorizontal_bias="0.0" android:hint="Password" android:textStyle="bold"
+            android:textColor="@android:color/white" android:textSize="20sp"/>
     <Button
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:id="@+id/login_button_login" android:layout_marginTop="24dp"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:id="@+id/login_button_login" android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/password_edittext_login"
             app:layout_constraintEnd_toEndOf="@+id/password_edittext_login"
             app:layout_constraintStart_toStartOf="@+id/password_edittext_login" android:text="LOGIN"
@@ -60,4 +65,23 @@
             android:id="@+id/back_to_register_text_view"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintVertical_bias="0.0"/>
+    <TextView
+            android:text="Welcome!"
+            android:layout_width="346dp"
+            android:layout_height="52dp"
+            android:id="@+id/textView"
+            android:textSize="45sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" android:layout_marginTop="132dp"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"/>
+    <TextView
+            android:text="Sign in to continue."
+            android:layout_width="319dp"
+            android:layout_height="41dp"
+            android:id="@+id/textView2" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="@+id/textView" android:textSize="30sp"
+            app:layout_constraintHorizontal_bias="0.0" android:textColor="@android:color/white"
+            android:textStyle="bold"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

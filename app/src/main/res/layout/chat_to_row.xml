@@ -9,7 +9,7 @@
 
     <TextView
             android:text="This is my message aand it will be wrapped if i continue text something random..."
-            android:background="@drawable/rounded_background_register_login"
+            android:background="@drawable/rounded_chat_to_row"
             android:padding="16dp"
             android:maxWidth="240dp"
             android:layout_width="wrap_content"
@@ -17,14 +17,15 @@
             android:id="@+id/textview_to_row"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageview_chat_to_row"
-            android:layout_marginRight="4dp" android:layout_marginEnd="4dp" android:layout_marginTop="8dp"/>
+            android:layout_marginRight="4dp" android:layout_marginEnd="4dp" android:layout_marginTop="8dp"
+            android:textColor="@android:color/white"/>
     <de.hdodenhof.circleimageview.CircleImageView
             app:civ_border_width="2dp"
             app:civ_border_color="@android:color/holo_orange_light"
             android:layout_width="50dp"
             android:layout_height="50dp" app:srcCompat="@mipmap/ic_launcher"
             android:id="@+id/imageview_chat_to_row"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"/>
